@@ -1,13 +1,6 @@
 .header_item {
-  background-image: url("https://img15.hostingpics.net/thumbs/mini_548573cinema.jpg");
-  background-size: cover;
-  width: 1920px;
-  height: 500px;
-}
-
-a {
-  text-decoration: none;
-  color: black;
+  background-color: #C5CAE9;
+  background-repeat: repeat;
 }
 
 .image {
@@ -17,5 +10,35 @@ a {
 
 h1 {
   text-align: center;
-  margin-bottom: 50px;
+  text-decoration: none;
+  color: white;
+  margin-bottom: 20px;
+  padding-top: 20px;
+}
+
+.col-1 {
+  margin-top: 20px;
+  height: 70%;
+}
+
+.fa {
+  text-decoration: none;
+}
+
+.nodeco {
+  text-decoration: none;
+
+}
+
+.nodeco:hover {
+  text-decoration: none;
+
+}
+
+.fa-user {
+  color: white;
+}
+
+.fa-user:hover {
+  color: grey;
 }

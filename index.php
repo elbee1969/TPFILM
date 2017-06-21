@@ -3,6 +3,8 @@ include('inc/pdo.php');
 include ('inc/functions.php');
 include('incfront/headerfront.php');
 ?>
+<div class="header_item">
+
 <h1><i class="fa fa-film" aria-hidden="true"></i> Bibliothèque</h1>
 
 
@@ -109,8 +111,8 @@ $liste = array(
     <input type="submit" name="btnSubmit" value="Filtrer">
   </form>
 </div>
-
-<a href="index.php">Autre film</a>
+</div>
+<a class="nodeco" href=""><button type="button" class="btn btn-secondary btn-lg btn-block">Afficher plus de films</button></a>
 <?php
 
 include('incfront/footerfront.php');

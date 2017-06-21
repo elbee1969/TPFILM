@@ -1,16 +1,25 @@
 h1 {
   text-align: center;
-  color: blue;
-  text-decoration: underline;
+  color: white;
+  text-decoration: none;
 }
 
 .movie {
   text-align: center;
-  background-color: black;
   color: white;
   margin: 0 7em;
 }
 
 .titledetail {
   text-decoration: underline;
+}
+
+.header_item {
+  background-color: #C5CAE9;
+  background-repeat: repeat-y;
+}
+
+.imgdetail {
+  width: 70%;
+  height: 70%;
 }
