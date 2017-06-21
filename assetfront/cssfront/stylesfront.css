@@ -1,1 +1,11 @@
+.header_item {
+  background-image: url("https://img15.hostingpics.net/thumbs/mini_548573cinema.jpg");
+  background-size: cover;
+  width: 1920px;
+  height: 500px;
+}
 
+a {
+  text-decoration: none;
+  color: black;
+}
