@@ -1,0 +1,16 @@
+h1 {
+  text-align: center;
+  color: blue;
+  text-decoration: underline;
+}
+
+.movie {
+  text-align: center;
+  background-color: black;
+  color: white;
+  margin: 0 7em;
+}
+
+.titledetail {
+  text-decoration: underline;
+}

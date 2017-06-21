@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="./assetfront/cssfront/font-awesome.css">
     <link rel="stylesheet" href="./assetfront/cssfront/font-awesome.min.css">
     <link  rel="stylesheet" href="./assetfront/cssfront/stylesfront.css">
+    <link  rel="stylesheet" href="./assetfront/cssfront/stylesfrontdetail.css">
   </head>
   <body>
 
@@ -37,4 +38,3 @@
     </header>
 
     <div class="wrapper">
-</div>
