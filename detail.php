@@ -5,13 +5,13 @@
 //pour test
 // $_GET['id'] = 4238;
 
-  if(!empty($_GET['id'])) {
-      $id = $_GET['id'];
+  if(!empty($_GET['slug'])) {
+      $slug = $_GET['slug'];
       //  requete a la BDD
-      $sql = "SELECT * FROM movies_full WHERE id = :id";
+      $sql = "SELECT * FROM movies_full WHERE slug = :slug";
 
       $query = $pdo->prepare($sql);
-      $query->bindValue(":id", $id, PDO::PARAM_INT);
+      $query->bindValue(":slug", $slug, PDO::PARAM_STR);
       $query->execute();
       $movies = $query->fetchAll();
 
@@ -19,7 +19,7 @@
       // debug($movies);
 
      } else {
-       die('l\id n\'est pas reconnu');
+       die('le slug n\'est pas reconnu');
      }
 
 
@@ -30,7 +30,7 @@ include('incfront/headerfront.php');
 <h1>Détail du film</h1>
 
 <?php foreach ($movies as $movie) {
-  if($movie['id'] == $id) {
+  if($movie['slug'] == $slug) {
     ?>
     <div class="movie">
       <h2><?php echo $movie['title']; ?></h2>
