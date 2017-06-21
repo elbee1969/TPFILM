@@ -18,7 +18,8 @@ h1 {
 
 .col-1 {
   margin-top: 20px;
-  height: 70%;
+  /*height: 70%;*/
+  text-align: center;
 }
 
 .fa {
