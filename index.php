@@ -55,9 +55,9 @@ $movies = $query->fetchAll();
 foreach ($movies as $movie) {
     echo '<div class="col-1">';
     if (file_exists('brief/posters/'.$movie['id'].'.jpg')) {
-      echo '<a href="detail.php?id='.$movie['id'].'"><img class="image" src="brief/posters/'.$movie['id'].'.jpg" alt="'.$movie['title'].'"></a>';
+      echo '<a href="detail.php?slug='.$movie['slug'].'"><img class="image" src="brief/posters/'.$movie['id'].'.jpg" alt="'.$movie['title'].'"></a>';
     } else {
-      echo '<a href="detail.php?id='.$movie['id'].'"><img class="image" src="brief/posters/noimage.jpg" alt="'.$movie['title'].'"></a>';
+      echo '<a href="detail.php?slug='.$movie['slug'].'"><img class="image" src="brief/posters/noimage.jpg" alt="'.$movie['title'].'"></a>';
     }
 
     echo '<p>'.$movie['title'].'<p/>';
