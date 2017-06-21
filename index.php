@@ -1,7 +1,6 @@
 <?php
 include('inc/pdo.php');
 include ('inc/functions.php');
-
 include('incfront/headerfront.php');
 ?>
 <h1>Liste des films</h1>
