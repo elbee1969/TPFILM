@@ -26,10 +26,10 @@
 include('incfront/headerfront.php');
 
 ?>
-<div class="header_item">
+<div class="header_item_detail">
 
-  <h1> <i class="fa fa-search" aria-hidden="true"></i> Détails du film</h1>
-<div class="row">
+  <h1><i class="fa fa-film" aria-hidden="true"></i> Détails du film</h1>
+<div class="row rowdetails">
   <div class="col-3">
 
 <?php foreach ($movies as $movie) {
@@ -65,7 +65,7 @@ include('incfront/headerfront.php');
       <br><br>
       <span class="titledetail">Evaluation:</span> <span> <?php echo $movie['rating']; ?></span>
       <br><br>
-      <span class="lastdetail">Popularité:</span> <span> <?php echo $movie['popularity']; ?></span>
+      <span class="lastdetail titledetail">Popularité:</span> <span> <?php echo $movie['popularity']; ?></span>
  </div>
 
 <div class="col-3">

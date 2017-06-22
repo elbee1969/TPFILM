@@ -6,6 +6,7 @@
 <script type="text/javascript" src="assetfront/jsfront/bootstrap.js"></script>
 <script type="text/javascript" src="assetfront/jsfront/app.js"></script>
 
+<footer>
 <div class="footer_item">
   <div class="row">
     <div class="col-3"><center><img class="trio" src="img/bob-trio-cine.png" alt=""></center></div>
@@ -19,8 +20,8 @@
     <div class="col-3"><center><img class="chat" src="img/marley-coussin.png" alt=""></center></div>
   </div>
 </div>
-
 <center>© 2017 BONIBALA - Tout droits réservés - Retrouvez et notez tout vos films préférés</center>
+</footer>
 
 
 

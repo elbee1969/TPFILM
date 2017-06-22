@@ -1,6 +1,44 @@
 body {
   background-color: #C5CAE9;
+  min-height: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  position: relative;
+  display : table;
+  width: 100%;
+  }
+
+  footer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
+
+
+
+footer {
+	display : table-row;
+	height: 339px; /* à titre d'exemple */
 }
+
+
+.btn-index {
+  margin-bottom: 80px;
+}
+
+.toutfilms {
+  margin-bottom: 300px;
+}
+
+html {
+  height : 100%;
+  margin: 0;
+  padding: 0;
+}
+
+
 
 .header_item {
   padding-left: 2%;
@@ -21,13 +59,21 @@ h1 {
   padding-top: 20px;
 }
 
-
-
 .col-1 {
   margin-top: 20px;
   /*height: 70%;*/
   text-align: center;
 }
+
+.col-6 {
+  margin-bottom: 30px;
+}
+
+.center {
+right: 0;
+left: 0;
+}
+
 
 .fa {
   text-decoration: none;
@@ -41,14 +87,6 @@ h1 {
 .nodeco:hover {
   text-decoration: none;
 
-}
-
-.fa-user {
-  color: white;
-}
-
-.fa-user:hover {
-  color: grey;
 }
 
 /* style hide pour formulaire filtre */
@@ -82,7 +120,7 @@ h1 {
   margin-right: 10px;
 }
 
-.btn-lg {
+.btn-inscription {
   margin-bottom: 30px;
 }
 

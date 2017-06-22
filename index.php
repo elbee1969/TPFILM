@@ -150,8 +150,14 @@ include('incfront/headerfront.php');
 
   <h1><i class="fa fa-film" aria-hidden="true"></i> Bibliothèque</h1>
 
-
-
+  <div class="form">
+  <form method="GET" action="search.php">
+    <div class="form-group ">
+      <span class="error"><?php if(!empty($error['search'])) { echo $error['search']; } ?></span>
+      <input class="form-control" name="search" type="text" placeholder ="Quel film recherchez-vous ?" value="" id="example-text-input">
+    </div>
+  </form>
+  </div>
 
 <?php
 $annees1 = $firstDate;
@@ -218,7 +224,7 @@ $years = array();
 </div>
   <div class="row"> <?php
   foreach ($movies as $movie) {
-      echo '<div class="col-1">';
+      echo '<div class="col-6 col-xs-6 col-md-3 col-lg-2 col-xl-1 ">';
       if (file_exists('brief/posters/'.$movie['id'].'.jpg')) {
         echo '<a href="detail.php?slug='.$movie['slug'].'"><img class="image" src="brief/posters/'.$movie['id'].'.jpg" alt="'.$movie['title'].'"></a>';
       } else {
@@ -226,11 +232,17 @@ $years = array();
       }
       echo '<p>'.$movie['title'].'<p/>';
       echo'</div>';
-  }
-  ?>
+    }
+    ?>
+    <div class="container-fluid">
+      <div class="row toutfilms">
+        <a class="nodeco" href=""><button type="button" class="btn btn-lg btn-primary btn-index">Voir plus de films </button></a>
+      </div>
+    </div>
   </div>
-  <center><a class="nodeco" href=""><button type="button" class="btn btn-lg btn-primary">Voir plus de films </button></a></center>
+
 </div>
+
 
 <?php
 

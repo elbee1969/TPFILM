@@ -91,7 +91,7 @@ if (!empty($_POST['submitinscription'])) {
 include('incfront/headerfront.php'); ?>
 
 <div class="header_item form">
-<h1>Inscription</h1>
+<h1><i class="fa fa-user-plus" aria-hidden="true"></i> Inscription</h1>
 
 
 
@@ -125,7 +125,7 @@ include('incfront/headerfront.php'); ?>
      <label for="password1">Confirmation mot de passe :</label><br>
      <input type="password" name="password1" value="<?php if(!empty($_POST['password1'])) { echo $_POST['password1']; } ?>">
    </div>
-    <input type="submit" name="submitinscription" value="Je m'inscris" class="btn btn-lg btn-primary" />
+    <input type="submit" name="submitinscription" value="Je m'inscris" class="btn btn-lg btn-primary btn-inscription" />
   </form>
 </center>
 <?php } ?>
