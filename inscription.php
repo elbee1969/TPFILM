@@ -98,10 +98,15 @@ include('incfront/headerfront.php'); ?>
 
 <center>
 <?php if ($success == true) {
+<<<<<<< HEAD
 
   echo ' <p><center>Votre inscription est bien prise en compte <i class="fa fa-thumbs-o-up" aria-hidden="true"></i></center></p>'; ?>
   <a class="nav-link" href="index.php">Retour à l'accueil <span class="sr-only">(current)</span></a>
 
+=======
+  echo ' <p><center>Votre inscription est bien prise en compte <i class="fa fa-thumbs-o-up" aria-hidden="true"></i></center></p>'; ?>
+  <a class="nav-link" href="index.php">Retour à l'accueil <span class="sr-only">(current)</span></a>
+>>>>>>> eb9762a664f490d7ec0b7b089a9c559a11a4a19e
 <?php } else { ?>
 
   <form action="" method="post">

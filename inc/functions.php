@@ -48,3 +48,9 @@ function verifCountError($error)
   }
   return true;
 }
+//fonction faille XSS
+//trim enleve les espaceS et strip_tags supprime les balises HTml
+function failleXssB($var){
+  trim(strip_tags($var));
+  return $var;
+}
