@@ -93,7 +93,7 @@ include('incfront/headerfront.php'); ?>
 <h1>Inscription</h1>
 
 <?php if ($success == true) {
-  echo "Votre inscription est bien prise en compte"; ?>
+  echo '<div class="success">Votre inscription est bien prise en compte</div>' ; ?>
   <a class="nav-link" href="index.php">ACCUEIL <span class="sr-only">(current)</span></a>
 <?php } else { ?>
 
