@@ -1,6 +1,14 @@
 <?php
 include('inc/pdo.php');
 include ('inc/functions.php');
+//gestion du formulaire
+$errors = array();
+$sucessform = false;
+if(!empty($_POST['btnSubmit'])){
+echo 'YESS';
+}
+
+
 // on recupère le nbre d'enreg de la bdd
 $sql = "SELECT count(*) FROM `movies_full` ";
 $query = $pdo->prepare($sql);
@@ -52,24 +60,24 @@ $query->execute();
 $movies = $query->fetchAll();
 //
 $liste = array(
-'act '=> 'Action',
-'av' => 'Adventure',
-'bio' => 'Biography',
-'com' => 'Comedy',
-'cri' => 'Crime',
-'dra' => 'Drama',
-'noir' => 'Film-Noir',
+'act '  => 'Action',
+'av'    => 'Adventure',
+'bio'   => 'Biography',
+'com'   => 'Comedy',
+'cri'   => 'Crime',
+'dra'   => 'Drama',
+'noir'  => 'Film-Noir',
 'fanta' => 'Fantasy',
-'hor' => 'Horror',
-'myst' => 'Mystery',
-'mcal' => 'Musical',
-'mus' => 'Music',
-'rom' => 'Romance',
-'sf' => 'Sci-Fi',
-'spo' => 'Sport',
-'thri' => 'Thriller',
-'war' => 'War',
-'west' => 'Western'
+'hor'   => 'Horror',
+'myst'  => 'Mystery',
+'mcal'  => 'Musical',
+'mus'   => 'Music',
+'rom'   => 'Romance',
+'sf'    => 'Sci-Fi',
+'spo'   => 'Sport',
+'thri'  => 'Thriller',
+'war'   => 'War',
+'west'  => 'Western'
 );
 include('incfront/headerfront.php');
 ?>
@@ -87,17 +95,22 @@ $years = array();
 
 debug($_POST);
 ?>
+<div id="filtre">
+<input type="button" name="aff" value="Filtres">
+</div>
+<div class="hide" id="actionFiltre">
+
   <form class="" action="index.php" method="post">
 
   <label for="genre">
-  <input type="checkbox" name="filtre" value="genre">
+  <input type="checkbox" name="filtre[]" value="genre">
   Par catégorie
     <label for="genres"></label>
     <select class="" name="genres">
       <option value="none">???</option>
       <?php
       foreach ($liste as $key => $value) {?>
-        <option value="<?php echo $key; ?>"<?php if(!empty($_POST['genres'])) { if($_POST['genres'] == $key) { echo ' selected="selected"'; } } ?>><?php echo $value; ?></option>
+        <option value="<?php echo $value; ?>"<?php if(!empty($_POST['genres'])) { if($_POST['genres'] == $key) { echo ' selected="selected"'; } } ?>><?php echo $value; ?></option>
         <?php }?>
     </select>
   </label>
@@ -105,7 +118,7 @@ debug($_POST);
       ?>
   <label for="annees">
     par date
-  <input type="checkbox" name="year" value="year">
+  <input type="checkbox" name="filtre[]" value="year">
   <!--creation de la liste d'option pour la date de départ avec retour du selected-->
     <label for="yearS">De </label>
     <select class="" name="yearS">
@@ -116,7 +129,7 @@ debug($_POST);
       }
       foreach ($years as $key => $value) {
         ?>
-        <option value="<?php echo $key; ?>"<?php if(!empty($_POST['yearS'])) { if($_POST['yearS'] == $key) { echo ' selected="selected"'; } } ?>><?php echo $value; ?></option>
+        <option value="<?php echo $value; ?>"<?php if(!empty($_POST['yearS'])) { if($_POST['yearS'] == $key) { echo ' selected="selected"'; } } ?>><?php echo $value; ?></option>
         <?php }?>
     </select>
 <?php
@@ -133,18 +146,23 @@ debug($_POST);
     }
     foreach ($years as $key => $value) {
       ?>
-      <option value="<?php echo $key; ?>"<?php if(!empty($_POST['yearE'])) { if($_POST['yearE'] == $key) { echo ' selected="selected"'; } } ?>><?php echo $value; ?></option>
+      <option value="<?php echo $value; ?>"<?php if(!empty($_POST['yearE'])) { if($_POST['yearE'] == $value) { echo ' selected="selected"'; } } ?>><?php echo $value; ?></option>
       <?php }?>
   </select>
   </label>
 
-    <label for="popularity">
-      <input type="checkbox" name="popularity" value="popularity">
-      Par popularité
-    </label>
+  <label for="popularity">
+    <input type="checkbox" name="filtre[]" value="popularity">
+    Par popularité
+  </label>
+  <label for ="all">
+    <input type="checkbox" name="filtre[]" value="all">
+    Tous les critères
+  </label>
   </label>
         <input type="submit" name="btnSubmit" value="Filtrer">
   </form>
+</div>
   <div class="row"> <?php
   foreach ($movies as $movie) {
       echo '<div class="col-1">';

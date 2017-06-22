@@ -43,3 +43,7 @@ h1 {
 .fa-user:hover {
   color: grey;
 }
+/* style hide pour formulaire filtre */
+.hide {
+  display:none;
+}
