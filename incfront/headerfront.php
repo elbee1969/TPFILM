@@ -30,7 +30,7 @@
             </li>
           </ul>
           <span class="navbar-text">
-            <a href="#"><i class="fa fa-user fa-2x" aria-hidden="true"></i> <a href="#"></a>
+            <a href="inscription.php"><i class="fa fa-user fa-2x" aria-hidden="true"></i></a>
           </span>
         </div>
       </nav>
