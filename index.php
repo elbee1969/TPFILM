@@ -51,6 +51,7 @@ $query = $pdo->prepare($sql);
 $query->execute();
 $movies = $query->fetchAll();
 //
+
 $liste = array(
 'act '=> 'Action',
 'av' => 'Adventure',
@@ -158,8 +159,9 @@ debug($_POST);
   }
   ?>
   </div>
+  <center><a class="nodeco" href=""><button type="button" class="btn btn-lg btn-primary">Voir plus de films </button></a></center>
 </div>
-<a class="nodeco" href=""><button type="button" class="btn btn-secondary btn-lg btn-block">Afficher plus de films</button></a>
+
 <?php
 
 include('incfront/footerfront.php');

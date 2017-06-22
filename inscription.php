@@ -16,16 +16,16 @@ if (!empty($_POST['submitinscription'])) {
  // Gestion des erreurs
 
  if(empty($pseudo)) {
-   $errors['pseudo'] = 'Veuillez indiquer un pseudo.';
+   $errors['pseudo'] = '<p class="error">Veuillez indiquer un pseudo.</p>';
  }
  elseif(strlen($pseudo) > 30) {
-   $errors['pseudo'] = 'Votre pseudo est trop long.';
+   $errors['pseudo'] = '<p class="error">Votre pseudo est trop long.</p>';
  }
  elseif(strlen($pseudo) < 2) {
-   $errors['pseudo'] = 'Votre pseudo est trop court.';
+   $errors['pseudo'] = '<p class="error">Votre pseudo est trop court.</p>';
  }
  elseif(preg_match('/\d/', $pseudo)) {
-   $errors['pseudo'] = 'Votre nom ne doit pas contenir de chiffre.';
+   $errors['pseudo'] = '<p class="error">Votre nom ne doit pas contenir de chiffre.</p>';
  }
  // verifier que pseudo est unique
     else {
@@ -35,15 +35,15 @@ if (!empty($_POST['submitinscription'])) {
            $smtp->execute();
            $pseudoexist = $smtp->fetch();
        if($pseudoexist) {
-         $errors['pseudo'] = 'Ce pseudo existe déjà.';
+         $errors['pseudo'] = '<p class="error">Ce pseudo existe déjà.</p>';
        }
 
  }
  if(empty($email) || (filter_var($email, FILTER_VALIDATE_EMAIL)) === false) {
-     $errors['email'] = 'Adresse email invalide.';
+     $errors['email'] = '<p class="error">Adresse email invalide.</p>';
    }
    elseif(strlen($email) > 50) {
-     $errors['email'] = 'Votre adresse e-mail est trop longue.';
+     $errors['email'] = '<p class="error">Votre adresse e-mail est trop longue.</p>';
    }
    // verifier que email est unique dans la table users
    else {
@@ -54,14 +54,14 @@ if (!empty($_POST['submitinscription'])) {
              $resultmail = $smtp->fetch();
 
              if($resultmail) {
-                $errors['email'] = 'Cette adresse e-mail existe déjà.';
+                $errors['email'] = '<p class="error">Cette adresse e-mail existe déjà.</p>';
              }
    }
    if($password != $password1) {
-	      $errors['password'] = 'Les mots de passes ne sont pas identiques.';
+	      $errors['password'] = '<p class="error">Les mots de passes ne sont pas identiques.</p>';
 	    }
 	    elseif(strlen($password) <= 5) {
-	      $errors['password'] = 'Votre mot de passe doit faire plus de 5 caractères.';
+	      $errors['password'] = '<p class="error">Votre mot de passe doit faire plus de 5 caractères.</p>';
 	    }
       if(count($errors) == 0) {
 
@@ -90,40 +90,43 @@ if (!empty($_POST['submitinscription'])) {
 
 include('incfront/headerfront.php'); ?>
 
+<div class="header_item form">
 <h1>Inscription</h1>
 
+
+
+
+<center>
 <?php if ($success == true) {
-  echo "Votre inscription est bien prise en compte"; ?>
-  <a class="nav-link" href="index.php">ACCUEIL <span class="sr-only">(current)</span></a>
+  echo ' <p><center>Votre inscription est bien prise en compte <i class="fa fa-thumbs-o-up" aria-hidden="true"></i></center></p>'; ?>
+  <a class="nav-link" href="index.php">Retour à l'accueil <span class="sr-only">(current)</span></a>
 <?php } else { ?>
 
   <form action="" method="post">
 
    <div class="form-group">
-     <label for="pseudo">Pseudo:</label>
+     <label for="pseudo">Pseudo :</label><br>
      <span class="error"><?php if(!empty($errors['pseudo'])) { echo $errors['pseudo']; } ?></span>
      <input type="text" name="pseudo" value="<?php if(!empty($_POST['pseudo'])) { echo $_POST['pseudo']; } ?>">
    </div>
    <div class="form-group">
-    <label for="email">E-mail:</label>
+    <label for="email">E-mail :</label><br>
     <span class="error"><?php if(!empty($errors['email'])) { echo $errors['email']; } ?></span>
     <input type="email" name="email" value="<?php if(!empty($_POST['email'])) { echo $_POST['email']; } ?>">
    </div>
    <div class="form-group">
-     <label for="password">Password:</label>
+     <label for="password">Mot de passe :</label><br>
      <span class="error"><?php if(!empty($errors['password'])) { echo $errors['password']; } ?></span>
      <input type="password" name="password" value="<?php if(!empty($_POST['password'])) { echo $_POST['password']; } ?>">
    </div>
    <div class="form-group">
-     <label for="password1">Confirm password:</label>
+     <label for="password1">Confirmation mot de passe :</label><br>
      <input type="password" name="password1" value="<?php if(!empty($_POST['password1'])) { echo $_POST['password1']; } ?>">
    </div>
-    <input type="submit" name="submitinscription" value="Je m'inscris" class="btn btn-default" />
+    <input type="submit" name="submitinscription" value="Je m'inscris" class="btn btn-lg btn-primary" />
   </form>
-
+</center>
 <?php } ?>
-
-
-
+</div>
 
 <?php include('incfront/footerfront.php'); ?>

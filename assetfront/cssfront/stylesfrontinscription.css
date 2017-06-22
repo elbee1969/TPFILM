@@ -1,0 +1,21 @@
+.error {
+  color: red;
+}
+
+.form {
+  padding-bottom: 5%;
+}
+
+.nav-link {
+  padding-bottom: 17%;
+}
+
+.connexinscri {
+  text-decoration: none;
+  color: white;
+}
+
+.connexinscri:hover {
+  text-decoration: none;
+  color: #E0E0E0;
+}

@@ -9,13 +9,11 @@
     <link rel="stylesheet" href="./assetfront/cssfront/font-awesome.min.css">
     <link  rel="stylesheet" href="./assetfront/cssfront/stylesfront.css">
     <link  rel="stylesheet" href="./assetfront/cssfront/stylesfrontdetail.css">
+    <link  rel="stylesheet" href="./assetfront/cssfront/stylesfrontinscription.css">
   </head>
   <body>
 
     <header>
-<div class="header_item">
-
-</div>
       <nav class=" navbar-toggleable-md navbar navbar-inverse bg-inverse">
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -30,8 +28,10 @@
             </li>
           </ul>
           <span class="navbar-text">
-            <a href="inscription.php"><i class="fa fa-user fa-2x" aria-hidden="true"></i></a>
+            <a class="connexinscri" href="inscription.php">Inscription</i></a> | <a class="connexinscri" href="connexion.php">connexion</i></a>
           </span>
         </div>
       </nav>
     </header>
+      <body>
+        <html>
