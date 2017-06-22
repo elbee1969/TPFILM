@@ -4,8 +4,27 @@ include ('inc/functions.php');
 //gestion du formulaire
 $errors = array();
 $sucessform = false;
+
+$param ="'genres' LIKE 'action' ";
+//SELECT * FROM `movies_full` WHERE `genres` LIKE '%comedy%' AND `genres` LIKE '%action%'
+
+
 if(!empty($_POST['btnSubmit'])){
-echo 'YESS';
+
+// selection des film dans la BDD ici limité a 30 films ....
+$param = '';
+$sql = "SELECT * FROM `movies_full` WHERE `genres` LIKE '%comedy%' AND `genres` LIKE '%action%'";
+$query = $pdo->prepare($sql);
+$query->execute();
+$movies = $query->fetchAll();
+
+}else{
+
+  // selection des film dans la BDD ici limité a 30 films ....
+  $sql = "SELECT * FROM movies_full WHERE 1 ORDER BY RAND()  LIMIT 36";
+  $query = $pdo->prepare($sql);
+  $query->execute();
+  $movies = $query->fetchAll();
 }
 
 
@@ -53,11 +72,6 @@ $query->execute();
 $popul = $query->fetchAll();
 //debug($popul);
 
-// selection des film dans la BDD ici limité a 30 films ....
-$sql = "SELECT * FROM movies_full WHERE 1 ORDER BY RAND()  LIMIT 36";
-$query = $pdo->prepare($sql);
-$query->execute();
-$movies = $query->fetchAll();
 //
 $liste = array(
 'act '  => 'Action',
@@ -102,23 +116,12 @@ debug($_POST);
 
   <form class="" action="index.php" method="post">
 
-  <label for="genre">
-  <input type="checkbox" name="filtre[]" value="genre">
-  Par catégorie
-    <label for="genres"></label>
-    <select class="" name="genres">
-      <option value="none">???</option>
-      <?php
-      foreach ($liste as $key => $value) {?>
-        <option value="<?php echo $value; ?>"<?php if(!empty($_POST['genres'])) { if($_POST['genres'] == $key) { echo ' selected="selected"'; } } ?>><?php echo $value; ?></option>
-        <?php }?>
-    </select>
-  </label>
-      <?php
-      ?>
-  <label for="annees">
-    par date
-  <input type="checkbox" name="filtre[]" value="year">
+    <?php
+    foreach ($liste as $value) {?>
+      <input type="checkbox" name="filtre[]"  value="<?php echo $value; ?> "><?php echo $value; ?> <br>
+      <?php }?>
+
+
   <!--creation de la liste d'option pour la date de départ avec retour du selected-->
     <label for="yearS">De </label>
     <select class="" name="yearS">
@@ -149,17 +152,14 @@ debug($_POST);
       <option value="<?php echo $value; ?>"<?php if(!empty($_POST['yearE'])) { if($_POST['yearE'] == $value) { echo ' selected="selected"'; } } ?>><?php echo $value; ?></option>
       <?php }?>
   </select>
-  </label>
+
 
   <label for="popularity">
     <input type="checkbox" name="filtre[]" value="popularity">
     Par popularité
   </label>
-  <label for ="all">
-    <input type="checkbox" name="filtre[]" value="all">
-    Tous les critères
-  </label>
-  </label>
+
+
         <input type="submit" name="btnSubmit" value="Filtrer">
   </form>
 </div>
