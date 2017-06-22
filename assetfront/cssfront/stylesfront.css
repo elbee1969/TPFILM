@@ -1,6 +1,12 @@
-.header_item {
+body {
   background-color: #C5CAE9;
 }
+
+.header_item {
+  padding-left: 2%;
+  padding-right: 2%;
+}
+
 
 .image {
   width: 100%;
@@ -10,10 +16,12 @@
 h1 {
   text-align: center;
   text-decoration: none;
-  color: white;
+  color: black;
   margin-bottom: 20px;
   padding-top: 20px;
 }
+
+
 
 .col-1 {
   margin-top: 20px;
@@ -42,7 +50,45 @@ h1 {
 .fa-user:hover {
   color: grey;
 }
+
 /* style hide pour formulaire filtre */
 .hide {
   display:none;
+}
+
+.footer_item {
+  background-color: #9FA8DA;
+  border-top: 2px solid #5C6BC0;
+}
+
+.trio {
+  width: 80%;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+.chat {
+  margin-top: 30px;
+  margin-bottom: 30px;
+  width: 60%;
+}
+
+.footer_text {
+  margin-top: 30px;
+}
+
+.rs {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.btn-lg {
+  margin-bottom: 30px;
+}
+
+
+.imgfooter {
+  width: 30%;
+  margin-bottom: -10px;
+
 }

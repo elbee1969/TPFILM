@@ -1,8 +1,4 @@
-h1 {
-  text-align: center;
-  color: white;
-  text-decoration: none;
-}
+
 
 .movie {
   text-align: center;
@@ -21,8 +17,14 @@ html {
 .imgdetail {
   width: 70%;
   height: 70%;
+  padding-bottom: 30px;
 }
 
 .col-9 {
   margin-top: 50px;
+  margin-bottom: 30px;
+}
+
+.lastdetail {
+  margin-bottom: 30px;
 }
