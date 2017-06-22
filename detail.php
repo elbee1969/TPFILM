@@ -28,7 +28,7 @@ include('incfront/headerfront.php');
 ?>
 <div class="header_item">
 
-  <h1>Détail du film</h1>
+  <h1> <i class="fa fa-search" aria-hidden="true"></i> Détails du film</h1>
 <div class="row">
   <div class="col-3">
 
@@ -46,7 +46,7 @@ include('incfront/headerfront.php');
 
  </div>
 
-<div class="col-9">
+<div class="col-6"><br><br>
       <span class="titledetail centredetail">Année du film:</span><span> <?php echo $movie['year']; ?></span>
 <br><br>
       <span class="titledetail">Catégorie:</span> <span> <?php echo $movie['genres']; ?></span>
@@ -65,9 +65,16 @@ include('incfront/headerfront.php');
       <br><br>
       <span class="titledetail">Evaluation:</span> <span> <?php echo $movie['rating']; ?></span>
       <br><br>
-      <span class="titledetail">Popularité:</span> <span> <?php echo $movie['popularity']; ?></span>
- </div></div></div><?php
+      <span class="lastdetail">Popularité:</span> <span> <?php echo $movie['popularity']; ?></span>
+ </div>
+
+<div class="col-3">
+  <h2><center>Notez ce film</center></h2>
+</div>
+
+
+
+ <br><br><br></div></div> <?php
   }
  }
-
  include('incfront/footerfront.php');
