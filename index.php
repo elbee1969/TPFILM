@@ -4,15 +4,16 @@ include ('inc/functions.php');
 //gestion du formulaire
 $errors = array();
 $sucessform = false;
+$filtre = array();
 
-$param ="'genres' LIKE 'action' ";
+//$param ="'genres' LIKE 'action' ";
 //SELECT * FROM `movies_full` WHERE `genres` LIKE '%comedy%' AND `genres` LIKE '%action%'
 
 
 if(!empty($_POST['btnSubmit'])){
-
+//if
 // selection des film dans la BDD ici limité a 30 films ....
-$param = '';
+//$param = '';
 $sql = "SELECT * FROM `movies_full` WHERE `genres` LIKE '%comedy%' AND `genres` LIKE '%action%' ORDER BY `genres`  LIMIT 36";
 $query = $pdo->prepare($sql);
 $query->execute();
@@ -107,8 +108,10 @@ include('incfront/headerfront.php');
 $annees1 = $firstDate;
 $annees2 = $firstDate;
 $years = array();
-
+echo 'post : ';
 debug($_POST);
+echo 'filtre : ';
+debug($filtre);
 ?>
 <div id="filtre">
 <input type="button" name="aff" value="Filtres">
