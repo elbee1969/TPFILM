@@ -184,7 +184,7 @@ $years = array();
   <!--creation de la liste d'option pour la date de départ avec retour du selected-->
     <label for="yearS">De </label>
     <select class="" name="yearS">
-      <option value="none">???</option>
+      <option value="none">Début</option>
       <?php
       for($i=$firstDate; $i < $lastDate+1; $i++){
         $years[] = $annees1++;
@@ -201,7 +201,7 @@ $years = array();
  <!--creation de la liste d'option pour la date de fin avec retour du selected-->
   <label for="yearE"> à </label>
   <select class="" name="yearE">
-    <option value="none">???</option>
+    <option value="none">Fin</option>
     <?php
     for($i=$firstDate; $i < $lastDate+1; $i++){
       $years[] = $annees2++;
@@ -215,7 +215,7 @@ $years = array();
 
   <label for="popularity">
     <input type="checkbox" name="popularity" value="popularity">
-    Par popularité
+    Par popularité > 80
   </label>
 
 
