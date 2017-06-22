@@ -51,14 +51,11 @@ h1 {
   color: grey;
 }
 
-<<<<<<< HEAD
-=======
 /* style hide pour formulaire filtre */
 .hide {
   display:none;
 }
 
->>>>>>> eb9762a664f490d7ec0b7b089a9c559a11a4a19e
 .footer_item {
   background-color: #9FA8DA;
   border-top: 2px solid #5C6BC0;
@@ -93,8 +90,4 @@ h1 {
 .imgfooter {
   width: 30%;
   margin-bottom: -10px;
-<<<<<<< HEAD
-=======
-
->>>>>>> eb9762a664f490d7ec0b7b089a9c559a11a4a19e
 }
