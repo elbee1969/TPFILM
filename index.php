@@ -5,19 +5,68 @@ include ('inc/functions.php');
 $errors = array();
 $sucessform = false;
 $filtre = array();
+$var = '';
 
 //$param ="'genres' LIKE 'action' ";
 //SELECT * FROM `movies_full` WHERE `genres` LIKE '%comedy%' AND `genres` LIKE '%action%'
 
-
 if(!empty($_POST['btnSubmit'])){
-//if
+
+  // Faille XSS
+  $sql = "SELECT * FROM movies_full WHERE 1 = 1";
+  if(!empty($_POST['filtre'])){
+
+
+        $filtres = $_POST['filtre'];
+
+        $i = 1;
+        foreach ($filtres as $filtre) {
+
+          if($i == 1) {
+            $sql .= " AND genres LIKE '%".trim($filtre)."%'";
+          } else {
+            $sql .= " OR genres LIKE '%".trim($filtre)."%'";
+          }
+          $i++;
+
+        }
+
+  }
+if(!empty($_POST['year'])){
+  $deb = $_POST['yearS'];
+  $fin = $_POST['yearF'];
+
+  if ($fin > $deb){
+    $sql .= " AND year BETWEEN '.$deb.' AND '.$fin.'";
+  }else{
+    $sql .= " AND year = '.$deb.' ";
+  }
+
+}
+
+if(!empty($_POST['popularity'])){
+  $pop = $_POST['popularity'];
+  $sql .= " AND popularity > 80 ";
+
+}
+
+  $sql .= " ORDER BY RAND() LIMIT 10";
+
+  // echo $sql; die();
+
 // selection des film dans la BDD ici limité a 30 films ....
-//$param = '';
-$sql = "SELECT * FROM `movies_full` WHERE `genres` LIKE '%comedy%' AND `genres` LIKE '%action%' ORDER BY `genres`  LIMIT 36";
-$query = $pdo->prepare($sql);
-$query->execute();
-$movies = $query->fetchAll();
+// $param = '';
+// $sql = "SELECT * FROM `movies_full` WHERE `genres` LIKE '%comedy%' AND `genres` LIKE '%action%' ORDER BY `genres`  LIMIT 36";
+ $query = $pdo->prepare($sql);
+ $query->execute();
+ $movies = $query->fetchAll();
+
+ //debug($movies);
+
+
+
+
+//die();
 
 }else{
 
@@ -108,10 +157,10 @@ include('incfront/headerfront.php');
 $annees1 = $firstDate;
 $annees2 = $firstDate;
 $years = array();
-echo 'post : ';
-debug($_POST);
-echo 'filtre : ';
-debug($filtre);
+// echo 'post : ';
+// debug($_POST);
+// echo 'filtre : ';
+// echo $filtre[]['genres'];
 ?>
 <div id="filtre">
 <input type="button" name="aff" value="Filtres">
@@ -122,7 +171,7 @@ debug($filtre);
 
     <?php
     foreach ($liste as $value) {?>
-      <input type="checkbox" name="filtre[]"  value="<?php echo $value; ?> "><?php echo $value; ?> <br>
+      <input type="checkbox" name="filtre[]"  value="<?php echo $value; ?> "><?php echo $value; ?>
       <?php }?>
 
 
@@ -159,7 +208,7 @@ debug($filtre);
 
 
   <label for="popularity">
-    <input type="checkbox" name="filtre[]" value="popularity">
+    <input type="checkbox" name="popularity" value="popularity">
     Par popularité
   </label>
 
