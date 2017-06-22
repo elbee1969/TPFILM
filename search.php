@@ -16,30 +16,38 @@ $query = $pdo->prepare($sql);
 $query->execute();
 $movies = $query->fetchAll();
 
+?>
 
+<h1><i class="fa fa-search" aria-hidden="true"></i> Résultats de recherche</h1>
+
+<?php
 
 if (count($movies) === 0) {
   echo '<p>Aucun résultat, merci de refaire une recherche</p>';
 
 	?>
+<div class="container-fluid">
+	<div class="row">
 
-	<div class="form">
-	<form method="GET" action="search.php">
-	  <div class="form-group ">
-	    <span class="error"><?php if(!empty($error['search'])) { echo $error['search']; } ?></span>
-	    <input class="form-control" name="search" type="text" placeholder ="rechercher ..." value="" id="example-text-input">
-	  </div>
-	</form>
+		<div class="form">
+			<form method="GET" action="search.php">
+				<div class="form-group ">
+					<span class="error"><?php if(!empty($error['search'])) { echo $error['search']; } ?></span>
+					<input class="form-control" name="search" type="text" placeholder ="rechercher ..." value="" id="example-text-input">
+				</div>
+			</form>
+		</div>
 	</div>
+</div>
 
-	<?php 
+	<?php
 
 
 	echo '<p><a href="index.php">Retour à l\'accueil</a></p>';
 }
 
 elseif (count($movies) > 0) {
-  echo '<p class="yesresult">Voici la liste des résultats '.'('.count($movies).')'.'</p>';
+  echo '<center><p class="yesresult">Voici la liste des résultats '.'('.count($movies).')'.'</p></center>';
 
 ?>
 			<div class="row"> <?php

@@ -42,24 +42,24 @@ include('incfront/headerfront.php');
 
 ?>
 
-<h1>Mot de passe perdu</h1>
+<h1> <i class="fa fa-key" aria-hidden="true"></i> Mot de passe perdu</h1><br>
 
 <?php
 if ($success == true) {
-  echo '<div class = "success">envoi de mail avec la récupération du mot de passe</div>';
+  echo '<div class = "success">Un email vous a été envoyé avec un lien de récupération ! <i class="fa fa-thumbs-o-up" aria-hidden="true"></i></div>';
 } else {
 
 ?>
 
-<form action="" method="post">
+<center><form action="" method="post">
   <div class="form-group">
-    <label for="email">Email</label>
+    <label for="email">Email</label><br>
     <span class="error"><?php if(!empty($errors['email'])) { echo $errors['email']; } ?></span>
     <input type="text" name="email" value="<?php if(!empty($_POST['email'])) { echo $_POST['email']; } ?> ">
   </div>
 
-  <input type="submit" name="submitbtn" value="Envoi">
-</form>
+  <input type="submit" name="submitbtn" value="Envoyer" class="btn btn-lg btn-primary btn-password">
+</form></center>
 
 <?php }
 

@@ -14,10 +14,10 @@ if (!empty($_POST['submitconnexion'])) {
 
 
   if(empty($pseudo)) {
-	    $errors['pseudo'] = 'Veuillez indiquer un pseudo.';
+	    $errors['pseudo'] = '<br><p class="error">Veuillez indiquer un pseudo.</p>';
 	}
 	if(empty($password)) {
-	    $errors['password'] = 'Veuillez indiquer un password.';
+	    $errors['password'] = '<br><p class="error">Veuillez indiquer un mot de passe.</p>';
 	}
 
   if(count($errors) == 0) {
@@ -31,7 +31,7 @@ if (!empty($_POST['submitconnexion'])) {
 
         if (!$user) {
 
-          $errors['pseudo'] = 'Pseudo or email invalide';
+          $errors['pseudo'] = '<br><p class="error">Pseudo ou email invalide.</p>';
         } else {
           // echo "succés";
 
@@ -68,31 +68,31 @@ if (!empty($_POST['submitconnexion'])) {
 
 include('incfront/headerfront.php'); ?>
 
-<h1>Connexion</h1>
+<h1><i class="fa fa-user" aria-hidden="true"></i> Connexion</h1>
 
 <?php if ($success == true) {
-  echo '<div class="success">Connecté</div>' ; ?>
-  <a class="nav-link" href="index.php">ACCUEIL <span class="sr-only">(current)</span></a>
+  echo '<center><div class="success">Vous êtes connecté ! <i class="fa fa-thumbs-o-up" aria-hidden="true"></i></div></center>' ; ?>
+  <center><a class="nav-link" href="index.php">Retour à l'accueil <span class="sr-only">(current)</span></a></center>
 <?php } else { ?>
-<form action="connexion.php" method="post">
+<center><form action="connexion.php" method="post">
 
   <div class="form-group">
-    <label for="pseudo">Pseudo ou E-mail</label>
+    <label for="pseudo">Pseudo ou email</label><br>
     <span class="error"><?php if(!empty($errors['pseudo'])) { echo $errors['pseudo']; } ?></span>
     <input type="text" name="pseudo" value="<?php if(!empty($_POST['pseudo'])) { echo $_POST['pseudo']; } ?>">
   </div>
 
   <div class="form-group">
-    <label for="password">Password</label>
+    <label for="password">Password</label><br>
     <span class="error"><?php if(!empty($errors['password'])) { echo $errors['password']; } ?></span>
     <input type="text" name="password" value="<?php if(!empty($_POST['password'])) { echo $_POST['password']; } ?>">
   </div>
 
   <input type="checkbox" name="remember"> Se souvenir de moi
   <br>
-  <input type="submit" name="submitconnexion" value="connexion">
+  <input type="submit" name="submitconnexion" value="connexion" class="btn btn-lg btn-primary btn-connexion">
 </form>
-<a href="passwordforget.php">Mot de passe perdu</a>
+<a href="passwordforget.php"><p class="mdpperdu">Mot de passe perdu</p></a></center>
 
 <?php }
 

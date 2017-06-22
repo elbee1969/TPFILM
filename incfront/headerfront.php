@@ -10,6 +10,8 @@
     <link  rel="stylesheet" href="./assetfront/cssfront/stylesfront.css">
     <link  rel="stylesheet" href="./assetfront/cssfront/stylesfrontdetail.css">
     <link  rel="stylesheet" href="./assetfront/cssfront/stylesfrontinscription.css">
+    <link  rel="stylesheet" href="./assetfront/cssfront/stylesfrontconnexion.css">
+    <link  rel="stylesheet" href="./assetfront/cssfront/stylesfrontlostpassword.css">
   </head>
   <body>
 
