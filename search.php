@@ -23,12 +23,15 @@ $movies = $query->fetchAll();
 <?php
 
 if (count($movies) === 0) {
-  echo '<p>Aucun résultat, merci de refaire une recherche</p>';
+  echo '<center><p>Aucun résultat <i class="fa fa-thumbs-o-down" aria-hidden="true"></i> ! merci de refaire une recherche</p></center>';
 
 	?>
 <div class="container-fluid">
-	<div class="row">
+	<div class="row ">
+		<div class="col-4">
 
+		</div>
+		<div class="col-4 align-self-center">
 		<div class="form">
 			<form method="GET" action="search.php">
 				<div class="form-group ">
@@ -37,22 +40,22 @@ if (count($movies) === 0) {
 				</div>
 			</form>
 		</div>
+	<?php	echo '<center><p><a href="index.php">Retour à l\'accueil</a></p></center>'; ?>
 	</div>
 </div>
-
+</div>
 	<?php
 
 
-	echo '<p><a href="index.php">Retour à l\'accueil</a></p>';
 }
 
 elseif (count($movies) > 0) {
-  echo '<center><p class="yesresult">Voici la liste des résultats '.'('.count($movies).')'.'</p></center>';
+  echo '<center><p class="yesresult">Nous avons trouvé '.''.count($movies).' résultats !'.'</p></center>';
 
 ?>
-			<div class="row"> <?php
+			<div class="row header_search"> <?php
 		  foreach ($movies as $movie) {
-		      echo '<div class="col-1">';
+		      echo '<div class="col-6 col-xs-6 col-md-3 col-lg-2 col-xl-1 ">';
 		      if (file_exists('brief/posters/'.$movie['id'].'.jpg')) {
 		        echo '<a href="detail.php?slug='.$movie['slug'].'"><img class="image" src="brief/posters/'.$movie['id'].'.jpg" alt="'.$movie['title'].'"></a>';
 		      } else {
