@@ -150,14 +150,6 @@ include('incfront/headerfront.php');
 
   <h1><i class="fa fa-film" aria-hidden="true"></i> Bibliothèque</h1>
 
-  <div class="form">
-  <form method="GET" action="search.php">
-    <div class="form-group ">
-      <span class="error"><?php if(!empty($error['search'])) { echo $error['search']; } ?></span>
-      <input class="form-control" name="search" type="text" placeholder ="Quel film recherchez-vous ?" value="" id="example-text-input">
-    </div>
-  </form>
-  </div>
 
 <?php
 $annees1 = $firstDate;

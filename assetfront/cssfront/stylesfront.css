@@ -16,7 +16,9 @@ body {
     right: 0;
   }
 
-
+.con {
+  margin-right: 20px;
+}
 
 footer {
 	display : table-row;
@@ -43,6 +45,13 @@ html {
 .header_item {
   padding-left: 2%;
   padding-right: 2%;
+}
+
+.header_search {
+  padding-left: 2%;
+  padding-right: 2%;
+  margin-bottom: 320px;
+
 }
 
 
