@@ -14,6 +14,7 @@ if(!empty($_POST['btnSubmit'])){
 
   // Faille XSS
   $sql = "SELECT * FROM movies_full WHERE 1 = 1";
+
   if(!empty($_POST['filtre'])){
 
 
@@ -50,7 +51,7 @@ if(!empty($_POST['popularity'])){
 
 }
 
-  $sql .= " ORDER BY RAND() LIMIT 10";
+  $sql .= " ORDER BY RAND() LIMIT 36";
 
   // echo $sql; die();
 
@@ -78,11 +79,18 @@ if(!empty($_POST['popularity'])){
 }
 
 
-// on recupère le nbre d'enreg de la bdd
+// on recupère le nbre d'enreg de la table movies_full
 $sql = "SELECT count(*) FROM `movies_full` ";
 $query = $pdo->prepare($sql);
 $query->execute();
 $count = $query->fetchColumn();
+
+// on recupère le nbre d'enreg de la table users
+$sql = "SELECT count(*) FROM `users` ";
+$query = $pdo->prepare($sql);
+$query->execute();
+$countUsers = $query->fetchColumn();
+
 //debug($count);
 // on récupère le premier id
 $sql = "SELECT MIN(id) FROM `movies_full` ";
@@ -168,6 +176,15 @@ $years = array();
 // echo 'filtre : ';
 // echo $filtre[]['genres'];
 ?>
+<div class="">
+  <h3>Statistiques</h3>
+  <p>La vidéothèque possède <?php echo $count ?> références</p>
+  <p>La vidéothèque accueille <?php echo $countUsers ?> abonnés</p>
+  <p>Nombre d'inscrit depuis 5 semaines : </p>
+  <p>Top 30 des films : </p>
+
+
+</div>
 <div id="filtre">
 <input type="button" name="aff" value="Filtres">
 </div>
