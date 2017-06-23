@@ -176,15 +176,7 @@ $years = array();
 // echo 'filtre : ';
 // echo $filtre[]['genres'];
 ?>
-<div class="">
-  <h3>Statistiques</h3>
-  <p>La vidéothèque possède <?php echo $count ?> références</p>
-  <p>La vidéothèque accueille <?php echo $countUsers ?> abonnés</p>
-  <p>Nombre d'inscrit depuis 5 semaines : </p>
-  <p>Top 30 des films : </p>
 
-
-</div>
 <div id="filtre">
 <input type="button" name="aff" value="Filtres">
 </div>
