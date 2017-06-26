@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 include('inc/functions.php');
 include('inc/pdo.php');
 include('incfront/headerfront.php');

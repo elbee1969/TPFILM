@@ -3,9 +3,14 @@ session_start();
 include('inc/pdo.php');
 include('inc/functions.php');
 
-include('inc/session.php');
 $errors = array();
-$success = false;
+if (!empty($_COOKIE['usercook']) && !isset($_SESSION['user'])){
+  $success = true;
+}else{
+
+  $success = false;
+}
+include('inc/session.php');
 
 if (!empty($_POST['submitconnexion'])) {
 
@@ -42,7 +47,7 @@ if (!empty($_POST['submitconnexion'])) {
             // si la case souviens toi de moi est cocher
             if (!empty($_POST['remember'])) {
               // création d'un cookie
-              setcookie('usercook', $user['id']. '---' . sha1($user['pseudo'].$user['password'].$_SERVER['REMOTE_ADDR']), time() + 3600 * 24 * 5, '/');
+               setcookie('usercook', $user['id']. '---' . sha1($user['pseudo'].$user['password'].$_SERVER['REMOTE_ADDR']), time() + 3600 * 24 * 5, '/');
 
             }
 
@@ -61,7 +66,8 @@ if (!empty($_POST['submitconnexion'])) {
 }
 }
 
-
+// debug($_COOKIE);
+// debug($_SESSION);
 
 
 
@@ -71,7 +77,9 @@ include('incfront/headerfront.php'); ?>
 <h1><i class="fa fa-user" aria-hidden="true"></i> Connexion</h1>
 
 <?php if ($success == true) {
-  echo '<center><div class="success">Vous êtes connecté ! <i class="fa fa-thumbs-o-up" aria-hidden="true"></i></div></center>' ; ?>
+  echo '<center><div class="success">Vous êtes connecté ! <i class="fa fa-thumbs-o-up" aria-hidden="true"></i></div></center>' ;
+
+  ?>
   <center><a class="nav-link" href="index.php">Retour à l'accueil <span class="sr-only">(current)</span></a></center>
 <?php } else { ?>
 <center><form action="connexion.php" method="post">

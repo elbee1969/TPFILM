@@ -6,47 +6,53 @@ session_start();
 //pour test
 // $_GET['id'] = 4238;
 
+
   if(!empty($_GET['slug'])) {
-      $slug = $_GET['slug'];
+    $slug = $_GET['slug'];
       //  requete a la BDD
       $sql = "SELECT * FROM movies_full WHERE slug = :slug";
 
       $query = $pdo->prepare($sql);
       $query->bindValue(":slug", $slug, PDO::PARAM_STR);
       $query->execute();
-      $movies = $query->fetchAll();
+      $movie = $query->fetch();
 
       //pour test
-      // debug($movies);
+      // debug($movie);
       // die();
-     } else {
-       die('le slug n\'est pas reconnu');
-     }
-     $sessionId = $_SESSION['user']['id'];
-     $movieId = $movies['0']['id'];
-     if (isset($_POST['note'])){
-     $note = $_POST['note'];
-      }
-     $sql ="SELECT * FROM note AS n LEFT JOIN users as u ON n.user_id = u.id";
-     $query = $pdo->prepare($sql);
-     $query->execute();
-     $userNote = $query->fetch();
+     if (!empty($_SESSION)){
+       $sessionId = $_SESSION['user']['id'];
+       $movieId = $movie['id'];
 
-     if (!empty($_POST['btnsubmit'])){
-       //echo 'coucou';
-       if(!empty($_POST['note']) && is_numeric($_POST['note']) && $_POST['note'] >= 0 && $_POST['note'] <=100){
-         $sql= "INSERT INTO note (user_id, movie_id, note, created_at)
-         VALUES ($sessionId, $movieId, $note, now())
-         ";
+         $sql ="SELECT * FROM note WHERE user_id = $sessionId AND movie_id = $movieId";
          $query = $pdo->prepare($sql);
          $query->execute();
+         $userNote = $query->fetch();
+         if (isset($_POST['note'])){
+           $note = $_POST['note'];
 
-       }else {
-         echo 'entrer une note entre 0 et 100';
        }
      }
+   } else {
 
+    die('le slug n\'est pas reconnu');
+   }
 
+   if (!empty($_POST['btnsubmit'])){
+    //  echo 'coucou';
+    //  echo '<br>';
+     if(!empty($_POST['note']) && is_numeric($_POST['note']) && $_POST['note'] >= 0 && $_POST['note'] <=100){
+      //  echo 'pret pour enreg';
+       $sql= "INSERT INTO note (user_id, movie_id, note, created_at)
+       VALUES ($sessionId, $movieId, $note, now())
+       ";
+       $query = $pdo->prepare($sql);
+       $query->execute();
+       header('Location: detail.php?slug='.$movie['slug'].'');
+     }else {
+       echo 'entrer une note entre 0 et 100';
+     }
+   }
 include('incfront/headerfront.php');
 
 ?>
@@ -56,9 +62,6 @@ include('incfront/headerfront.php');
 <div class="row rowdetails">
   <div class="col-3">
 
-<?php foreach ($movies as $movie) {
-  if($movie['slug'] == $slug) {
-    ?>
       <h2><center><?php echo $movie['title']; ?></center></h2>
 <?php
       if (file_exists('brief/posters/'.$movie['id'].'.jpg')) {
@@ -95,13 +98,18 @@ include('incfront/headerfront.php');
 <div class="col-3">
 <?php
 if (isLogged()){
-  if (isset($userNote) && $userNote != 0){
-    echo 'note ';
-    debug($userNote);
-  }else {
+
+  // debug($userNote);
+  // debug($movie['id']);
+  if(!empty($userNote)){
+
+        echo '<h2>Note : '.$userNote['note'].'/100</h2>';
+        echo '<p><a href="notedFilms.php">liste des films notés</a></p>';
+
+    }else{
  ?>
   <h2><center>Notez ce film</center></h2>
-  <form class="" action="" method="post">
+  <form class="" action="detail.php?slug=<?php echo $movie['slug']; ?>" method="post">
     <input type="text" name="note" value="<?php if (!empty($_POST['note'])){
       echo $_POST['note'];} ?>">
     <input type="submit" name="btnsubmit" value="Noter">
@@ -120,6 +128,6 @@ if (isLogged()){
 
  <br><br><br></div></div> <?php
 
-  }
- }
+
+
  include('incfront/footerfront.php');

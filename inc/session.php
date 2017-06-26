@@ -1,5 +1,6 @@
 <?php
 // systeme remember me
+
 if(!empty($_COOKIE['usercook']) && !isset($_SESSION['user'])) {
 
 	$auth = $_COOKIE['usercook'];
@@ -20,8 +21,9 @@ if(!empty($_COOKIE['usercook']) && !isset($_SESSION['user'])) {
     			'role'   => $usercook['role'],
           'ip'     => $_SERVER['REMOTE_ADDR'],
     		);
-    		setcookie('usercook', $usercook['id']. '---' . $keys , time() + 3600 * 24 * 5,'/');
-    		echo 'Bienvenue de nouveau '.$usercook['pseudo'];
+    		//setcookie('usercook', $usercook['id']. '---' . $keys , time() + 3600 * 24 * 5,'/');
+    		//echo 'Bienvenue de nouveau '.$usercook['pseudo'];
+
 		} else {
 			setcookie('usercook', '' , time() - 3600 ,'/');
 		}

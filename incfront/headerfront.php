@@ -30,13 +30,20 @@
             </li>
           </ul>
           <span class="navbar-text">
-            <a class="connexinscri" href="inscription.php">Inscription</i></a> | <a class="connexinscri con" href="connexion.php">Connexion</i></a>
+            <?php
+            if(isLogged()){ ?>
+                <a class="connexinscri" href="deconnexion.php">Bonjour <?php echo $_SESSION['user']['pseudo'] ?>, Déconnexion <i class="fa fa-unlock" aria-hidden="true"> </i> </a>
+            <?php }else{
+            ?>
+              <a class="connexinscri" href="inscription.php">Inscription</a> | <a class="connexinscri con" href="connexion.php">Connexion</i></a>
+
+            <?php } ?>
           </span>
           <form method="GET" action="search.php">
             <div class="form-group ">
               <span class="error"><?php if(!empty($error['search'])) { echo $error['search']; } ?></span>
               <input class="form-control" name="search" type="text" placeholder ="Rechercher un film ..." value="" id="example-text-input">
-              
+
             </div>
           </form>
         </div>
