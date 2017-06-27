@@ -1,5 +1,5 @@
-<?php include('../inc/pdo.php') ?>
-<?php include('../inc/function.php') ?>
+<?php include('/inc/pdo.php') ?>
+<?php include('/inc/function.php') ?>
 <?php
 session_start();
 
